@@ -52,7 +52,7 @@ define(['jquery', 'bootstrap', 'backend', 'addtabs', 'adminlte', 'form'], functi
                 Backend.api.addtabs($(this).data("url"));
             });
 
-            //读取首次登录推荐插件列表
+    /*        //读取首次登录推荐插件列表
             if (localStorage.getItem("fastep") == "installed") {
                 $.ajax({
                     url: Config.fastadmin.api_url + '/addon/recommend',
@@ -133,7 +133,7 @@ define(['jquery', 'bootstrap', 'backend', 'addtabs', 'adminlte', 'form'], functi
             //手动检测版本信息
             $("a[data-toggle='checkupdate']").on('click', function () {
                 checkupdate('', true);
-            });
+            });*/
 
             //切换左侧sidebar显示隐藏
             $(document).on("click fa.event.toggleitem", ".sidebar-menu li > a", function (e) {
