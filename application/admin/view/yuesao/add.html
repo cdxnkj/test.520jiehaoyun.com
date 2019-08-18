@@ -10,15 +10,16 @@
                 </div>
             </div>
             <div class="form-group  ">
-                <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+                <label class="control-label col-xs-12 col-sm-2">{:__('Type')}(多选):</label>
                 <div class="col-xs-12 col-sm-8">
 
-                    <select  id="c-type" data-rule="required" class="form-control selectpicker" name="row[type]">
-                        {foreach name="typeList" item="vo"}
-                            <option value="{$key}" {in name="key" value="yuesao"}selected{/in}>{$vo}</option>
-                        {/foreach}
-                    </select>
 
+
+                    <div class="checkbox">
+                        {foreach name="typeList" item="vo"}
+                        <label for="row[type][]-{$key}"><input id="row[type][]-{$key}" name="row[type][]" type="checkbox" value="{$key}" {in name="key" value=""}checked{/in} /> {$vo}</label>
+                        {/foreach}
+                    </div>
                 </div>
             </div>
             <div class="form-group ">
@@ -272,6 +273,8 @@
                         <ins>{:__('次数')}</ins>
                     </dd>
                     <dd><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i> {:__('Append')}</a></dd>
+                    <textarea name="row[training_records]" class="form-control hide" cols="30" rows="5">{$row.training_records}</textarea>
+
                 </dl>
             </div>
         </div>

@@ -74,6 +74,7 @@ class Yuesao extends Backend
         if ($this->request->isPost()) {
             $params = $this->request->post("row/a");
             if ($params) {
+             /*   pr($params);die;
                 if ($params['training_records']) {
                     foreach ($params['training_records'] as $k => &$v) {
 //
@@ -82,7 +83,7 @@ class Yuesao extends Backend
                     $params['training_records'] = json_encode(array_reduce($params['training_records_new'], 'array_merge', []), JSON_UNESCAPED_UNICODE);
                     unset($params['training_records_new']);
 
-                }
+                }*/
 
 
                 $params = $this->preExcludeFields($params);
@@ -126,6 +127,73 @@ class Yuesao extends Backend
             }
             $this->error(__('Parameter %s can not be empty', ''));
         }
+        $row['training_records'] =json_encode([
+            '岗前培训'=>'0',
+            '中级升金牌'=>'0',
+            '金牌升钻石'=>'0',
+            '钻石升定制'=>'0',
+            '月子餐'=>'0',
+            '新生儿护理'=>'0',
+            '产妇护理'=>'0',
+            '产后康复'=>'0',
+
+        ],JSON_UNESCAPED_UNICODE) ;
+//        pr($row);die;
+
+        $this->view->assign('row',$row);
+        return $this->view->fetch();
+    }
+
+    /**
+     * 编辑
+     */
+    public function edit($ids = null)
+    {
+        $row = $this->model->get($ids);
+        if (!$row) {
+            $this->error(__('No Results were found'));
+        }
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds)) {
+            if (!in_array($row[$this->dataLimitField], $adminIds)) {
+                $this->error(__('You have no permission'));
+            }
+        }
+//        pr(json_decode($row->training_records),true);die;
+        if ($this->request->isPost()) {
+            $params = $this->request->post("row/a");
+            if ($params) {
+                $params = $this->preExcludeFields($params);
+                $result = false;
+                Db::startTrans();
+                try {
+                    //是否采用模型验证
+                    if ($this->modelValidate) {
+                        $name = str_replace("\\model\\", "\\validate\\", get_class($this->model));
+                        $validate = is_bool($this->modelValidate) ? ($this->modelSceneValidate ? $name . '.edit' : $name) : $this->modelValidate;
+                        $row->validateFailException(true)->validate($validate);
+                    }
+                    $result = $row->allowField(true)->save($params);
+                    Db::commit();
+                } catch (ValidateException $e) {
+                    Db::rollback();
+                    $this->error($e->getMessage());
+                } catch (PDOException $e) {
+                    Db::rollback();
+                    $this->error($e->getMessage());
+                } catch (Exception $e) {
+                    Db::rollback();
+                    $this->error($e->getMessage());
+                }
+                if ($result !== false) {
+                    $this->success();
+                } else {
+                    $this->error(__('No rows were updated'));
+                }
+            }
+            $this->error(__('Parameter %s can not be empty', ''));
+        }
+        $this->view->assign("row", $row);
         return $this->view->fetch();
     }
 
