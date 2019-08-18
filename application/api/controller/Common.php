@@ -47,6 +47,7 @@ class Common extends Api
      */
     public function upload()
     {
+//        echo 1;die;
         $file = $this->request->file('file');
         if (empty($file)) {
             $this->error(__('No file upload or server upload limit exceeded'));

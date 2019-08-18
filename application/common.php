@@ -2,6 +2,19 @@
 
 // 公共助手函数
 
+
+if (!function_exists('pr')) {
+    /**
+     * 打印变量
+     * @param $var
+     */
+    function pr($var)
+    {
+        $template = PHP_SAPI !== 'cli' ? '<pre>%s</pre>' : "\n%s\n";
+        printf($template, print_r($var, true));
+    }
+
+}
 if (!function_exists('__')) {
 
     /**
