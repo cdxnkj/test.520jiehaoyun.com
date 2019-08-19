@@ -83,8 +83,9 @@ class Yuesao extends Model
     public function getTypeTextAttr($value, $data)
     {
         $value = $value ? $value : (isset($data['type']) ? $data['type'] : '');
-        $list = $this->getTypeList();
-        return isset($list[$value]) ? $list[$value] : '';
+        $valueArr = explode(',', $value);
+        $list = $this->getHolderList();
+        return implode(',', array_intersect_key($list, array_flip($valueArr)));
     }
 
 

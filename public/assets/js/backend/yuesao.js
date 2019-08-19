@@ -14,7 +14,19 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 }
             });
 
+
             var table = $("#table");
+            // 绑定TAB事件
+            $('.panel-heading ul[data-field] li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                var field = $(this).closest("ul").data("field");
+                var value = $(this).data("value");
+                console.log(field);
+                console.log(value);
+
+                $("select[name='" + field + "'] option[value='" + value + "']", table.closest(".bootstrap-table").find(".commonsearch-table")).prop("selected", true);
+                table.bootstrapTable('refresh', {pageNumber: 1});
+                return false;
+            });
             $('.btn-add').data("area", ['95%','95%'])
             $('.btn-edit').data("area", ['95%','95%']);
 
@@ -29,7 +41,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
                         {field: 'name', title: __('Name')},
-                        {field: 'type', title: __('Type'), searchList: {"yuesao":__('Type yuesao'),"yuersao":__('Type yuersao')}, formatter: Table.api.formatter.normal},
+                        {field: 'type', title: __('Type'), searchList: {"yuesao":__('Type yuesao'),"yuersao":__('Type yuersao')}, formatter: Table.api.formatter.label},
                         {field: 'phone', title: __('Phone')},
                         {field: 'id_card', title: __('Id_card')},
                         {field: 'birth', title: __('Birth'), operate:'RANGE', addclass:'datetimerange'},
