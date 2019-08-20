@@ -18,6 +18,21 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             var table = $("#table");
             // 绑定TAB事件
             $('.panel-heading ul[data-field] li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+         /*       var options = table.bootstrapTable('getOptions');
+                options.pageNumber = 1;
+                options.queryParams = function (params) {
+                    return {
+                        search: params.search,
+                        sort: params.sort,
+                        order: params.order,
+                        filter: JSON.stringify({title: '登录'}),
+                        op: JSON.stringify({title: 'like'}),
+                        offset: params.offset,
+                        limit: params.limit
+                    };
+                };
+                console.log(options.queryParams);return;
+*/
                 var field = $(this).closest("ul").data("field");
                 var value = $(this).data("value");
                 console.log(field);

@@ -20,6 +20,19 @@ define([], function () {
         }
     }
 });
+require.config({
+    paths: {
+        'async': '../addons/example/js/async',
+        'BMap': ['//api.map.baidu.com/api?v=2.0&ak=mXijumfojHnAaN2VxpBGoqHM'],
+    },
+    shim: {
+        'BMap': {
+            deps: ['jquery'],
+            exports: 'BMap'
+        }
+    }
+});
+
 //修改上传的接口调用
 require(['upload'], function (Upload) {
     var _onUploadResponse = Upload.events.onUploadResponse;

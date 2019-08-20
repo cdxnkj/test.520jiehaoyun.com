@@ -18,12 +18,15 @@ class Yuesao extends Backend
      * @var \app\admin\model\Yuesao
      */
     protected $model = null;
-    protected $multiFields="switch";
+    protected $multiFields = "switch";
+
     public function _initialize()
     {
+
         parent::_initialize();
         $this->model = new \app\admin\model\Yuesao;
         $this->view->assign("typeList", $this->model->getTypeList());
+        $this->view->assign("levelList", $this->model->getLevelList());
         $this->view->assign("babyDataList", $this->model->getBabyDataList());
         $this->view->assign("schoolingDataList", $this->model->getSchoolingDataList());
         $this->view->assign("holderList", $this->model->getHolderList());
@@ -45,7 +48,7 @@ class Yuesao extends Backend
             if ($this->request->request('keyField')) {
                 return $this->selectpage();
             }
-            list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            list($where, $sort, $order, $offset, $limit) = $this->buildparams('name');
             $total = $this->model
                 ->where($where)
                 ->order($sort, $order)
@@ -74,16 +77,16 @@ class Yuesao extends Backend
         if ($this->request->isPost()) {
             $params = $this->request->post("row/a");
             if ($params) {
-             /*   pr($params);die;
-                if ($params['training_records']) {
-                    foreach ($params['training_records'] as $k => &$v) {
-//
-                        $params['training_records_new'][] = [$v['key'] => $v['value']];
-                    }
-                    $params['training_records'] = json_encode(array_reduce($params['training_records_new'], 'array_merge', []), JSON_UNESCAPED_UNICODE);
-                    unset($params['training_records_new']);
+                /*   pr($params);die;
+                   if ($params['training_records']) {
+                       foreach ($params['training_records'] as $k => &$v) {
+   //
+                           $params['training_records_new'][] = [$v['key'] => $v['value']];
+                       }
+                       $params['training_records'] = json_encode(array_reduce($params['training_records_new'], 'array_merge', []), JSON_UNESCAPED_UNICODE);
+                       unset($params['training_records_new']);
 
-                }*/
+                   }*/
 
 
                 $params = $this->preExcludeFields($params);
@@ -127,20 +130,20 @@ class Yuesao extends Backend
             }
             $this->error(__('Parameter %s can not be empty', ''));
         }
-        $row['training_records'] =json_encode([
-            '岗前培训'=>'0',
-            '中级升金牌'=>'0',
-            '金牌升钻石'=>'0',
-            '钻石升定制'=>'0',
-            '月子餐'=>'0',
-            '新生儿护理'=>'0',
-            '产妇护理'=>'0',
-            '产后康复'=>'0',
+        $row['training_records'] = json_encode([
+            '岗前培训' => '0',
+            '中级升金牌' => '0',
+            '金牌升钻石' => '0',
+            '钻石升定制' => '0',
+            '月子餐' => '0',
+            '新生儿护理' => '0',
+            '产妇护理' => '0',
+            '产后康复' => '0',
 
-        ],JSON_UNESCAPED_UNICODE) ;
+        ], JSON_UNESCAPED_UNICODE);
 //        pr($row);die;
 
-        $this->view->assign('row',$row);
+        $this->view->assign('row', $row);
         return $this->view->fetch();
     }
 

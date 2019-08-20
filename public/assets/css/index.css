@@ -37,6 +37,7 @@ h6 {
     font-weight: 200;
     letter-spacing: 1px;
 }
+
 p {
     font-size: 16px;
     line-height: 1.5;
@@ -276,7 +277,7 @@ section.features .feature-item h3 {
 }
 section.features .feature-item i {
     font-size: 60px;
-    
+
     background: -webkit-linear-gradient(to left,#328944, #247cdc);
     background: linear-gradient(to left, #328944, #247cdc);
     -webkit-background-clip: text;

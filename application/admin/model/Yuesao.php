@@ -26,12 +26,13 @@ class Yuesao extends Model
     // 追加属性
     protected $append = [
         'type_text',
+        'level_text',
         'baby_data_text',
         'schooling_data_text',
         'holder_text',
         'newborn_option_data_text',
         'maternal_options_data_text',
-        'medical_data_text'
+        'medical_data_text',
     ];
     
 
@@ -47,6 +48,10 @@ class Yuesao extends Model
     public function getTypeList()
     {
         return ['yuesao' => __('Type yuesao'), 'yuersao' => __('Type yuersao')];
+    }
+    public function getLevelList()
+    {
+        return ['zj' => __('Level zj'), 'jp' => __('Level jp'),'zs' => __('Level zs'),'srdz' => __('Level srdz')];
     }
 
     public function getBabyDataList()
@@ -83,6 +88,14 @@ class Yuesao extends Model
     public function getTypeTextAttr($value, $data)
     {
         $value = $value ? $value : (isset($data['type']) ? $data['type'] : '');
+        $valueArr = explode(',', $value);
+        $list = $this->getHolderList();
+        return implode(',', array_intersect_key($list, array_flip($valueArr)));
+    }
+
+    public function getLevelTextAttr($value, $data)
+    {
+        $value = $value ? $value : (isset($data['level']) ? $data['level'] : '');
         $valueArr = explode(',', $value);
         $list = $this->getHolderList();
         return implode(',', array_intersect_key($list, array_flip($valueArr)));
