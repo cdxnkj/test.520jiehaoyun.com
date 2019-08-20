@@ -6,10 +6,9 @@ use app\common\controller\Frontend;
 
 class Index extends Frontend
 {
-
     protected $noNeedLogin = '*';
     protected $noNeedRight = '*';
-    protected $layout = '';
+    protected $layout = 'default';
 
     public function index()
     {

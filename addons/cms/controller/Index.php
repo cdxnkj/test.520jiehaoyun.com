@@ -13,7 +13,7 @@ class Index extends Base
 {
     public function index()
     {
-        echo '520接好孕home';die;
+//        echo '520接好孕home';die;
         Config::set('cms.title', Config::get('cms.title') ? Config::get('cms.title') : __('Home'));
         if ($this->request->isAjax()) {
             $this->success("", "", $this->view->fetch('common/index_list'));
