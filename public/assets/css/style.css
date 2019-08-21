@@ -162,6 +162,19 @@ p {
 /*//服务理念*/
 .service-wrap .ser-container {
     padding: 0 12%;
+
+}
+.service-wrap .ser-container .pos_img{
+    position: absolute;
+    width: 539px;
+    height: 399px;
+    background-image: url('../img/位图备份 3@2x.png');
+    /*background-size: cover;*/
+    background-repeat: no-repeat;
+    /*opacity: 0.11;*/
+    transform: rotate(-15deg);
+    /*background: #03CCFF;*/
+
 }
 
 .service-wrap .services_title {
@@ -249,4 +262,77 @@ p {
     letter-spacing: 0;
     line-height: 26px;
     padding: 0 6%;
+}
+
+/*//板块三*/
+.after-sales .sales-container{
+    margin-top: 15%;
+}
+.after-sales .sales-left-img{
+    height: 529px;
+    max-height: 529px;
+    background-image: url('../img/aunt_home.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.after-sales .sales-row{
+    padding: 0 7%;
+
+}
+.after-sales .sales-row  p:first-child{
+    font-family: PingFangSC-Semibold;
+    font-size: 32px;
+    color: rgba(0,0,0,0.85);
+    letter-spacing: 1.94px;
+    text-align: left;
+}
+.after-sales   .right-row{
+    padding: 0 !important;
+    max-width: 408px;
+}
+.after-sales   .right-row .row,.col-block{
+    padding-top: 20%;
+}
+.after-sales   .right-row p.sales_t{
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: rgba(0,0,0,0.85);
+    letter-spacing: 0;
+    line-height: 32px;
+    padding: 10px;
+}
+.after-sales  .right-row .col-block  p:not(.sales_t){
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: rgba(0,0,0,0.45);
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 24px;
+}
+.after-sales  .right-row .col-block div:nth-child(2)~div{
+    padding-top: 13%;
+}
+
+/*//服务流程*/
+.ser_step{
+    padding-top: 7%;
+}
+.ser_step p:nth-child(1){
+    font-family: PingFangSC-Semibold;
+    font-size: 32px;
+    color: rgba(0,0,0,0.85);
+    letter-spacing: 1.94px;
+    text-align: center;
+}
+.ser_step p:nth-child(2){
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: rgba(0,0,0,0.65);
+    letter-spacing: 2.43px;
+    text-align: center;
+    padding: 10px 0 30px 0;
+}
+.ser_step div{
+
+
 }
