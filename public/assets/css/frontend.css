@@ -482,26 +482,28 @@ form.form-horizontal .control-label {
     margin-right: 0;
 }
 
-footer.footer {
-    width: 100%;
-    color: #aaa;
-    background: #555;
-    margin-top: 25px;
-}
+footer.footer .row   p:first-child{
 
-footer.footer .copyright {
-    line-height: 50px;
-    text-align: center;
-    background: #393939;
-    margin: 0;
+    font-family: PingFangSC-Semibold;
+    font-size: 18px;
+    color: #FFFFFF  ;
+    letter-spacing: 1.13px;
+    line-height: 30px;
+    margin-bottom: 0 !important;
 }
+footer.footer p.footer_info{
 
-footer.footer .copyright a {
-    color: #aaa;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: rgba(255,255,255,0.65) !important;
+    letter-spacing: 0.88px;
+    line-height: 24px;
 }
-
-footer.footer .copyright a:hover {
-    color: #fff;
+footer.footer ul li{
+    padding: 0;
+}
+footer.footer ul li img{
+    margin: 0 16px 10px 16px;
 }
 
 .rotate {

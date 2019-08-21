@@ -4,16 +4,18 @@
         {include file="common/meta" /}
         <!--<link href="__CDN__/assets/css/.css?v={$Think.config.site.version}" rel="stylesheet">-->
         <link href="__CDN__/assets/css/style{$Think.config.app_debug?'':'.min'}.css?v={$Think.config.site.version}" rel="stylesheet">
+        <link href="__CDN__/assets/css/user.css?v={$Think.config.site.version}" rel="stylesheet">
 
         <style>
             .content{
-                padding: 0;!important;
+                padding: 0 !important;
             }
         </style>
     </head>
 
     <body>
-
+        {if $Request.action=='register' || $Request.action=='login'}
+        {else /}
         <nav class="navbar   navbar-fixed-top" role="navigation">
             <div class="container" style="padding:10px 0;">
                 <div class="navbar-header">
@@ -34,7 +36,7 @@
                         <li><a href="/px" target="_blank">{:__('培训')}</a></li>
                         <li><a href="/address" target="_blank">{:__('门店地址')}</a></li>
 
-                        <li><a href="/" target="_blank">登录 </a>  <span class="nav_slipt"></span></li>
+                        <li><a href="{:url('user/register')}" target="_blank">登录 </a>  <span class="nav_slipt"></span></li>
 
                         <li><a href="/">注册</a></li>
                       <!--  <li class="dropdown">
@@ -63,13 +65,63 @@
             </div>
         </nav>
 
+        {/if}
         <main class="content">
             {__CONTENT__}
         </main>
 
-        <footer class="footer" style="clear:both">
-            <!-- FastAdmin是开源程序，建议在您的网站底部保留一个FastAdmin的链接 -->
-            <p class="copyright">Copyright&nbsp;©&nbsp;2017-2019 Powered by <a href="https://www.fastadmin.net" target="_blank">FastAdmin</a> All Rights Reserved {$site.name} {:__('Copyrights')} <a href="http://www.miibeian.gov.cn" target="_blank">{$site.beian}</a></p>
+        <footer class="footer" style="background: #303030;">
+            <div class="container" style="padding: 50px  0 60px 0;">
+
+                <div class="row text-center" >
+                    <div class="col-md-2 col-xs-6">
+                        <img src="__CDN__/assets/img/编组 11.png" alt="" class=" ">
+
+                    </div>
+                    <div class="col-md-2 col-xs-6">
+                        <img src="__CDN__/assets/img/编组 11备份.png" alt="">
+
+                    </div>
+                    <div class="col-md-5  col-md-offset-3 hidden-xs text-left">
+                        <p>接好孕月嫂中心</p>
+                        <div style="padding: 25px 0">
+                        <p class="footer_info ">Phone: +86 17345718967 17345728967</p>
+                        <p class="footer_info  ">Address: 成都市锦江区红星路二段70号4楼</p>
+                        </div>
+                        <ul class=" ">
+                            <li class="  col-md-3  col-xs-4 "><img src="__CDN__/assets/img/专业服务00@2x.png" alt="" width="20">
+                                <p class="footer_info " style="">专业服务</p>
+                            </li>
+                            <li class="  col-md-3   col-xs-4"><img src="__CDN__/assets/img/安全保障@2x.png" alt="" width="20">
+                                <p class="footer_info">品质保障</p>
+                            </li>
+                            <li class="  col-md-3   col-xs-4"><img src="__CDN__/assets/img/售后服务icon@2x.png" alt="" width="20">
+                                <p class="footer_info">售后无忧</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--移动端-->
+                    <div class="col-md-5  col-md-offset-3 visible-xs text-center">
+                        <p>接好孕月嫂中心</p>
+                        <div style="margin: 25px 0">
+                            <p class="footer_info ">Phone: +86 17345718967 17345728967</p>
+                            <p class="footer_info  ">Address: 成都市锦江区红星路二段70号4楼</p>
+                        </div>
+                        <ul class=" ">
+                            <li class="  col-md-3  col-xs-4 "><img src="__CDN__/assets/img/专业服务00@2x.png" alt="" width="20">
+                                <p class="footer_info " style="">专业服务</p>
+                            </li>
+                            <li class="  col-md-3   col-xs-4"><img src="__CDN__/assets/img/安全保障@2x.png" alt="" width="20">
+                                <p class="footer_info">品质保障</p>
+                            </li>
+                            <li class="  col-md-3   col-xs-4"><img src="__CDN__/assets/img/售后服务icon@2x.png" alt="" width="20">
+                                <p class="footer_info">售后无忧</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </footer>
 
         {include file="common/script" /}
