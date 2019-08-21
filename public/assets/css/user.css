@@ -1,17 +1,58 @@
-h2.page-header {
-    margin:10px 0  25px 0;
-    padding-bottom:15px;
+.p_l_10 {
+    padding-left: 10px;
 }
-.user-baseinfo {
-    margin-bottom:25px;
+
+.p_r_10 {
+    padding-right: 10px;
 }
-.user-baseinfo table tr td {color:#999;}
-@media (min-width: 767px) {
-    .user-center .avatar-text,.user-center .avatar-img {
-        height:150px;width:150px;border-radius: 150px;line-height:150px;font-size:70px;
-    }
-    .user-center .avatar-img  {font-size:0;}
-    .user-center .avatar-img img {
-        height:150px;width:150px;border-radius:150px;
-    }
+
+#res {
+    background-image: url("../img/bg/92eab8cdecda200af38397948a2e9ca.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*height: 500px;*/
+    border: none;
+}
+
+#res .logo_register {
+    padding-top: 60px;
+}
+
+#res .res_box {
+    background: #FFFFFF;
+    border: 1px solid #F6F9FC;
+    box-shadow: 0 4px 14px 2px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+#res .res_box h3 {
+    font-family: PingFangSC-Medium;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.65);
+    letter-spacing: 1.11px;
+    font-weight: bold;
+    padding: 50px 0;
+}
+
+#res .res_box ul li {
+    background: rgba(255, 255, 255, 0.00);
+    border: 1px solid #E1E4E8;
+    border-radius: 4px;
+    height: 48px;
+
+    line-height: 48px;
+}
+
+#res .res_box ul li span.res_form_note {
+    display: inline-block;
+    width: 80%;
+    font-family: PingFangSC-Medium;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.85);
+    letter-spacing: 0;
+    text-align: right;
+}
+#res .res_box ul li span.res_form_note:focus{
+    border: none !important;
 }

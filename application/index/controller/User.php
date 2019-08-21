@@ -21,7 +21,7 @@ class User extends Frontend
     public function _initialize()
     {
         parent::_initialize();
-        $auth = $this->auth;
+       /* $auth = $this->auth;
 
         if (!Config::get('fastadmin.usercenter')) {
             $this->error(__('User center already closed'));
@@ -44,7 +44,7 @@ class User extends Frontend
         Hook::add('user_logout_successed', function ($user) use ($auth) {
             Cookie::delete('uid');
             Cookie::delete('token');
-        });
+        });*/
     }
 
     /**
@@ -140,7 +140,7 @@ class User extends Frontend
      */
     public function login()
     {
-        $url = $this->request->request('url', '', 'trim');
+       /* $url = $this->request->request('url', '', 'trim');
         if ($this->auth->id) {
             $this->success(__('You\'ve logged in, do not login again'), $url ? $url : url('user/index'));
         }
@@ -185,7 +185,7 @@ class User extends Frontend
             $url = $referer;
         }
         $this->view->assign('url', $url);
-        $this->view->assign('title', __('Login'));
+        $this->view->assign('title', __('Login'));*/
         return $this->view->fetch();
     }
 

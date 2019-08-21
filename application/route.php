@@ -23,3 +23,7 @@ return [
 //            'api'   => 'api',
 //        ],
 ];
+
+use think\Route;
+//动态
+Route::rule('register','index/user/register','get');

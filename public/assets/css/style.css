@@ -5,12 +5,15 @@ ul, ol {
 }
 
 p {
-    margin: 0;
-!important;
+    /*margin: 0 !important;*/
+
 }
 
 .col_fixed {
     color: rgb(3, 204, 255);
+}
+.m_l_5{
+    margin-left: 5px;
 }
 
 .banner-wrap {
@@ -136,8 +139,8 @@ p {
 }
 
 .banner-wrap .form_input .service_type > p, .yuchan_sel > p {
-    margin: 0 0 5px 0;
-!important;
+    margin: 0 0 5px 0 !important;
+
     text-align: right;
     padding-right: 38px;
     font-weight: bold;
@@ -330,9 +333,14 @@ p {
     color: rgba(0,0,0,0.65);
     letter-spacing: 2.43px;
     text-align: center;
-    padding: 10px 0 30px 0;
+    padding-top: 10px;
 }
-.ser_step div{
-
+.ser_step .row div{
+    padding: 0;
+}
+.ser_step .step_tx{
+    padding:  10px 0 !important;
+}
+{
 
 }
