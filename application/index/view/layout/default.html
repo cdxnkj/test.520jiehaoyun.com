@@ -3,7 +3,8 @@
     <head>
         {include file="common/meta" /}
         <!--<link href="__CDN__/assets/css/.css?v={$Think.config.site.version}" rel="stylesheet">-->
-        <link href="__CDN__/assets/css/style{$Think.config.app_debug?'':'.min'}.css?v={$Think.config.site.version}" rel="stylesheet">
+
+        <link href="__CDN__/assets/css/index{$Think.config.app_debug?'':'.min'}.css?v={$Think.config.site.version}" rel="stylesheet">
         <link href="__CDN__/assets/css/user.css?v={$Think.config.site.version}" rel="stylesheet">
 
         <style>
@@ -36,9 +37,9 @@
                         <li><a href="/px" target="_blank">{:__('培训')}</a></li>
                         <li><a href="/address" target="_blank">{:__('门店地址')}</a></li>
 
-                        <li><a href="{:url('user/register')}" target="_blank">登录 </a>  <span class="nav_slipt"></span></li>
+                        <li><a href="" target="_blank">登录 </a>  <span class="nav_slipt"></span></li>
 
-                        <li><a href="/">注册</a></li>
+                        <li><a href="{:url('user/register')}">注册</a></li>
                       <!--  <li class="dropdown">
                             {if $user}
                             <a href="{:url('user/index')}" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 10px;height: 50px;">

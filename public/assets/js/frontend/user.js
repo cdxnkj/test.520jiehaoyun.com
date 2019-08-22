@@ -49,6 +49,10 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
             });
         },
         register: function () {
+            var phone_check_len = 0;
+            $('#res ul li').eq(0).find('span.phone').bind('keyup', function (e) {
+                Controller.repPhone(e);
+            })
             //本地验证未通过时提示
             $("#register-form").data("validator-options", validatoroptions);
 
@@ -60,6 +64,34 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
             }, function (data) {
                 $("input[name=captcha]").next(".input-group-addon").find("img").trigger("click");
             });
+        },
+        repPhone: function (event) {
+
+            setTimeout(function (value, whtchKey) {
+                var value = event.target.value;
+                var whitchKey = event.keyCode || event.charCode || event.ctrlKey;
+                // android输入法只能检测到8
+                if (whitchKey == 8) {
+                    //console.log("删除前:("+value+")");
+                    //mobile = value.split('');
+                    //console.log("转换后:("+mobile+")");
+                    //value = mobile.pop();
+                    value = value.substring(0, value.length);
+                    //console.log("删除后:("+value+")");
+                    event.target.value = value;
+                } else {
+                    var mobile = [];
+                    value = value.replace(/[^\d]/g, '');
+                    for (var i = 0; i < value.length; i++) {
+                        mobile.push(value[i]);
+                        if ((2 == i) || (6 == i)) {
+                            mobile.push('  ');
+                        }
+                    }
+                    event.target.value = mobile.join('');
+                }
+            }, 10);
+
         },
         changepwd: function () {
             //本地验证未通过时提示
