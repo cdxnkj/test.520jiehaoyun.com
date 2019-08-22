@@ -8,6 +8,8 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
     };
     var Controller = {
         login: function () {
+
+
             //本地验证未通过时提示
             $("#login-form").data("validator-options", validatoroptions);
 
@@ -49,48 +51,60 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
             });
         },
         register: function () {
-            var phone_check_len = 0;
-            $('#res ul li').eq(0).find('span.phone').bind('keyup', function (e) {
-                Controller.repPhone(e);
-            })
-            //本地验证未通过时提示
-            $("#register-form").data("validator-options", validatoroptions);
-
-            //为表单绑定事件
-            Form.api.bindevent($("#register-form"), function (data, ret) {
-                setTimeout(function () {
-                    location.href = ret.url ? ret.url : "/";
-                }, 1000);
-            }, function (data) {
-                $("input[name=captcha]").next(".input-group-addon").find("img").trigger("click");
-            });
-        },
-        repPhone: function (event) {
-
-            setTimeout(function (value, whtchKey) {
-                var value = event.target.value;
-                var whitchKey = event.keyCode || event.charCode || event.ctrlKey;
-                // android输入法只能检测到8
-                if (whitchKey == 8) {
-                    //console.log("删除前:("+value+")");
-                    //mobile = value.split('');
-                    //console.log("转换后:("+mobile+")");
-                    //value = mobile.pop();
-                    value = value.substring(0, value.length);
-                    //console.log("删除后:("+value+")");
-                    event.target.value = value;
-                } else {
-                    var mobile = [];
-                    value = value.replace(/[^\d]/g, '');
-                    for (var i = 0; i < value.length; i++) {
-                        mobile.push(value[i]);
-                        if ((2 == i) || (6 == i)) {
-                            mobile.push('  ');
-                        }
-                    }
-                    event.target.value = mobile.join('');
+            var form_arr = new Array();
+            //发送验证码
+            $('#res .cli-code').on('click', function () {
+               var loads =  Layer.load(2);
+                if (!(/^1[3456789]\d{9}$/.test($(this).closest('li').prev('li').find('span:last').text()))) {
+                    Toastr.error("手机号码有误");
+                    return false;
                 }
-            }, 10);
+
+                Controller.resetCode();
+                // Fast.api.ajax()/
+
+            })
+            $('.send-register').on('click', function () {
+
+
+                form_arr = [];
+                $('#res ul li[data-cod!="code"]').each(function () {
+                    var v = $.trim($(this).find('span:last').text());
+                    if (v == '') {
+                        Toastr.error('请将信息填写完整');
+                        form_arr = [];
+                        return false;
+                    }
+                    else {
+
+                        form_arr.push(v);
+
+                    }
+                });
+                console.log(Controller.repPhone());
+
+            });
+
+
+
+        },
+        resetCode: function () {
+            //倒计时
+            $('.cli-code').text(60+'(s)');
+
+            var second = 59;
+            var timer = null;
+            timer = setInterval(function () {
+                second -= 1;
+                if (second > 0) {
+                    $('.cli-code').html(second+'(s)').css("pointer-events","none");
+                } else {
+                    clearInterval(timer);
+                    $('.cli-code').text('获取验证码').css('pointer-events','');
+                    // $('#J_resetCode').hide();
+                }
+            }, 1000);
+
 
         },
         changepwd: function () {

@@ -15,7 +15,7 @@
 }
 
 #res .logo_register {
-    padding-top: 60px;
+    padding: 60px 0 100px 0;
 }
 
 #res .res_box {
@@ -89,4 +89,10 @@
     cursor: pointer;
     color: rgb(3, 204, 255);
 
+}
+#res .res_box .send-register~p a{
+    font-weight: bold;
+}
+#res .res_box .send-register~p{
+    margin-bottom: 60px !important;
 }
