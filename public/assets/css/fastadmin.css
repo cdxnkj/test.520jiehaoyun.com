@@ -173,9 +173,9 @@ h6,
   font-family: 'Source Sans Pro', sans-serif;
 }
 /* General Links */
-a {
+/*a {
   color: #3c8dbc;
-}
+}*/
 a:hover,
 a:active,
 a:focus {

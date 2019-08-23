@@ -15,7 +15,7 @@
 }
 
 #res .logo_register {
-    padding-top: 60px;
+    padding: 60px 0 100px 0;
 }
 
 #res .res_box {
@@ -42,6 +42,7 @@
     height: 48px;
 
     line-height: 48px;
+    margin-bottom: 20px;
 }
 
 #res .res_box ul li span.res_form_note {
@@ -53,6 +54,45 @@
     letter-spacing: 0;
     text-align: right;
 }
-#res .res_box ul li span.res_form_note:focus{
-    border: none !important;
+
+#res .res_box ul li span:nth-child(1):not(.res_form_note) {
+    min-width: 20%;
+}
+
+#res .res_box ul li span.res_form_note:focus {
+    outline: none !important;
+}
+
+#res .res_box ul li:nth-child(2) span:nth-child(2) {
+    display: inline-block;
+    width: 79%;
+    text-align: right;
+    float: right;
+    font-family: PingFangSC-Medium;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.85);
+    letter-spacing: 0;
+    font-weight: bold;
+}
+
+#res .res_box ul li:nth-child(2) span:nth-child(2) > span {
+    width: 1px;
+    border: 1px solid rgba(0, 0, 0, 0.85);
+    height: 10px;
+    margin-right: 3px;
+    display: inline-block;
+    min-width: 1px;
+
+    font-family: PingFangSC-Medium;
+}
+#res .res_box ul li:nth-child(2) span:nth-child(2):hover{
+    cursor: pointer;
+    color: rgb(3, 204, 255);
+
+}
+#res .res_box .send-register~p a{
+    font-weight: bold;
+}
+#res .res_box .send-register~p{
+    margin-bottom: 60px !important;
 }
