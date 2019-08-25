@@ -3,11 +3,13 @@
 namespace app\index\controller;
 
 use app\common\controller\Frontend;
+use fast\Random;
 use think\Config;
 use think\Cookie;
 use think\Hook;
 use think\Session;
 use think\Validate;
+use ucpaas\Ucpaas;
 
 /**
  * 会员中心
@@ -75,6 +77,9 @@ class User extends Frontend
      */
     public function register()
     {
+        $c = '2342';
+        $c =  send_sms_code('173289','sdfasd','15208369501');
+        pr($c);die;
         $url = $this->request->request('url', '', 'trim');
         if ($this->auth->id) {
             $this->success(__('You\'ve logged in, do not login again'), $url ? $url : url('user/index'));

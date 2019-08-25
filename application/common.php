@@ -15,12 +15,36 @@ if (!function_exists('pr')) {
     }
 
 }
+
+if (!function_exists('send_sms_code')) {
+    /**
+     * 打印变量
+     * @param $var
+     */
+    function send_sms_code($templateid, $param = null, $mobile)
+    {
+        $ucPaas = new \ucpaas\Ucpaas(
+            [
+                'accountsid' => \think\Env::get('sms.accountsid'),
+                'token' => \think\Env::get('sms.token'),
+
+            ]
+        );
+        $appid = '33553da944fb487089dadb16a37c53cc';
+        return $ucPaas->SendSms($appid, $templateid, $param = null, $mobile);
+
+
+    }
+
+}
+
+
 if (!function_exists('__')) {
 
     /**
      * 获取语言变量值
      * @param string $name 语言变量名
-     * @param array  $vars 动态变量值
+     * @param array $vars 动态变量值
      * @param string $lang 语言
      * @return mixed
      */
@@ -42,7 +66,7 @@ if (!function_exists('format_bytes')) {
 
     /**
      * 将字节转换为可读文本
-     * @param int    $size      大小
+     * @param int $size 大小
      * @param string $delimiter 分隔符
      * @return string
      */
@@ -60,7 +84,7 @@ if (!function_exists('datetime')) {
 
     /**
      * 将时间戳转换为日期时间
-     * @param int    $time   时间戳
+     * @param int $time 时间戳
      * @param string $format 日期时间格式
      * @return string
      */
@@ -75,7 +99,7 @@ if (!function_exists('human_date')) {
 
     /**
      * 获取语义化时间
-     * @param int $time  时间
+     * @param int $time 时间
      * @param int $local 本地时间
      * @return string
      */
@@ -89,7 +113,7 @@ if (!function_exists('cdnurl')) {
 
     /**
      * 获取上传资源的CDN的地址
-     * @param string  $url    资源相对地址
+     * @param string $url 资源相对地址
      * @param boolean $domain 是否显示域名 或者直接传入域名
      * @return string
      */
@@ -139,8 +163,8 @@ if (!function_exists('rmdirs')) {
 
     /**
      * 删除文件夹
-     * @param string $dirname  目录
-     * @param bool   $withself 是否删除自身
+     * @param string $dirname 目录
+     * @param bool $withself 是否删除自身
      * @return boolean
      */
     function rmdirs($dirname, $withself = true)
@@ -169,7 +193,7 @@ if (!function_exists('copydirs')) {
     /**
      * 复制文件夹
      * @param string $source 源文件夹
-     * @param string $dest   目标文件夹
+     * @param string $dest 目标文件夹
      */
     function copydirs($source, $dest)
     {
@@ -205,7 +229,7 @@ if (!function_exists('addtion')) {
 
     /**
      * 附加关联字段数据
-     * @param array $items  数据列表
+     * @param array $items 数据列表
      * @param mixed $fields 渲染的来源字段
      * @return array
      */
@@ -277,7 +301,7 @@ if (!function_exists('var_export_short')) {
 
     /**
      * 返回打印数组结构
-     * @param string $var    数组
+     * @param string $var 数组
      * @param string $indent 缩进字符
      * @return string
      */

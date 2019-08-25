@@ -54,11 +54,11 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
             var form_arr = new Array();
             //发送验证码
             $('#res .cli-code').on('click', function () {
-               var loads =  Layer.load(2);
                 if (!(/^1[3456789]\d{9}$/.test($(this).closest('li').prev('li').find('span:last').text()))) {
                     Toastr.error("手机号码有误");
                     return false;
                 }
+                var loads =  Layer.load(2);
 
                 Controller.resetCode();
                 // Fast.api.ajax()/
