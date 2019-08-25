@@ -12,7 +12,8 @@ class Index extends Frontend
 
     public function index()
     {
-        return $this->view->fetch();
+
+        return $this->view->fetch('index');
     }
 
     public function news()

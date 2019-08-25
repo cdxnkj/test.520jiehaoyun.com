@@ -18,10 +18,10 @@ if (!function_exists('pr')) {
 
 if (!function_exists('send_sms_code')) {
     /**
-     * 打印变量
+     * 短信发送
      * @param $var
      */
-    function send_sms_code($templateid, $param = null, $mobile)
+    function send_sms_code($templateid, $param, $mobile)
     {
         $ucPaas = new \ucpaas\Ucpaas(
             [
@@ -30,8 +30,8 @@ if (!function_exists('send_sms_code')) {
 
             ]
         );
-        $appid = '33553da944fb487089dadb16a37c53cc';
-        return $ucPaas->SendSms($appid, $templateid, $param = null, $mobile);
+        $appid = \think\Env::get('sms.appid');
+        return $ucPaas->SendSms($appid, $templateid, $param, $mobile);
 
 
     }
