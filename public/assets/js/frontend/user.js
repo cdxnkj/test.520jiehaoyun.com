@@ -144,10 +144,11 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
                     return false;
                 }
                 var loads = Layer.load(2);
-                Controller.resetCode();
                 $.post('user/getCode', {phone: phone}, function (ret) {
                     Layer.close(loads);
                     if (ret.code == 1) {
+                        Controller.resetCode();
+
                         Layer.msg(ret.msg);
                     }
                     Layer.msg(ret.msg);

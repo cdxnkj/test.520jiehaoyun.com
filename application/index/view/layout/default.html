@@ -4,12 +4,16 @@
         {include file="common/meta" /}
         <!--<link href="__CDN__/assets/css/.css?v={$Think.config.site.version}" rel="stylesheet">-->
 
-        <link href="__CDN__/assets/css/index{$Think.config.app_debug?'':'.min'}.css?v={$Think.config.site.version}" rel="stylesheet">
-        <link href="__CDN__/assets/css/user.css?v={$Think.config.site.version}" rel="stylesheet">
+        <!--<link href="__CDN__/assets/css/index{$Think.config.app_debug?'':'.min'}.css?v={$Think.config.site.version}" rel="stylesheet">-->
+        <!--<link href="__CDN__/assets/css/user.css?v={$Think.config.site.version}" rel="stylesheet">-->
 
         <style>
             .content{
                 padding: 0 !important;
+            }
+            .nav_white{
+                background-color: #fff !important;
+                border-bottom: 1px solid rgba(0,0,0,0.09);
             }
         </style>
     </head>
@@ -17,7 +21,7 @@
     <body>
         {if $Request.action=='register' || $Request.action=='login'}
         {else /}
-        <nav class="navbar   navbar-fixed-top" role="navigation">
+        <nav class="navbar   navbar-fixed-top    " role="navigation" style="" >
             <div class="container" style="padding:10px 0;">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#header-navbar">
@@ -31,17 +35,17 @@
                 <div class="collapse navbar-collapse" id="header-navbar">
                     <ul class="nav navbar-nav navbar-right">
 
-                        <li><a href="/" target="_blank" >{:__('首页')}</a></li>
+                        <li><a href="/"  class="{if $Request.controller=='Index'} col_fixed {/if} ">{:__('首页')}</a></li>
 
-                        <li><a href="/zys" target="_blank" >{:__('找月嫂')}</a></li>
+                        <li><a href="{:url('find_ys/index')}"  class="{if $Request.controller=='FindYs'} col_fixed {/if} ">{:__('找月嫂')}</a></li>
                         <li><a href="/zyrs" target="_blank">{:__('找育儿嫂')}</a></li>
                         <li><a href="/px" target="_blank">{:__('培训')}</a></li>
                         <li><a href="/address" target="_blank">{:__('门店地址')}</a></li>
                         {if $user}
-                        <li> <a href=""  ><img src="{$user.avatar|cdnurl}" alt="" class=" " width="20" style="border-radius: 50%;"> {$user.mobile}</a></li>
+                        <li> <a href="javascript:void(0)"  ><img src="{$user.avatar|cdnurl}" alt="" class=" " width="20" style="border-radius: 50%;"> {$user.mobile}</a></li>
 
                         {else /}
-                        <li class="lo"><a href="" target="_blank" >登录 </a>  <span class="nav_slipt"></span></li>
+                        <li class="lo"><a href="{:url('user/login')}" >登录 </a>  <span class="nav_slipt"></span></li>
 
                         <li class="re"><a href="{:url('user/register')}"  >注册</a></li>
 

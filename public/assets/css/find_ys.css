@@ -1,0 +1,215 @@
+#res {
+    padding-top: 90px;
+    background-image: url("../img/find_ys/位图@2x.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#res p.find-ys-title {
+    padding-top: 25px;
+    margin-bottom: 0 !important;
+    /*border-bottom:  1px solid #E1E4E8;*/
+}
+
+#res p.find-ys-title span:first-child {
+    font-family: PingFangSC-Medium;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.85);
+    letter-spacing: 1.11px;
+}
+
+#res .form-box {
+    background: #FFFFFF;
+    border: 1px solid #F6F9FC;
+    box-shadow: 0 25px 38px 7px rgba(0, 0, 0, 0.06);
+}
+
+.p_l_10 {
+    padding-left: 10px;
+}
+
+.p_r_10 {
+    padding-right: 10px;
+}
+
+#res .logo_register {
+    padding: 60px 0 100px 0;
+}
+
+#res .res_box {
+    background: #FFFFFF;
+    border: 1px solid #F6F9FC;
+    box-shadow: 0 4px 14px 2px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+#res .res_box h3 {
+    font-family: PingFangSC-Medium;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.65);
+    letter-spacing: 1.11px;
+    font-weight: bold;
+    padding: 50px 0;
+}
+
+form#register-form .controls {
+    border: 1px solid #E1E4E8;
+    border-radius: 4px;
+    height: 48px;
+}
+
+form#register-form .controls .form-control {
+    width: 70%;
+    float: right;
+    border: none;
+    text-align: right;
+    max-height: 46px;
+    margin-top: 3px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+    letter-spacing: 0;
+    /*margin-bottom:0px;*/
+    /*border: 1px solid #E1E4E8;*/
+}
+
+form#register-form .label-left {
+    width: 30%;
+    display: inline-block;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 10px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+    letter-spacing: 0;
+}
+
+form#register-form .form-group {
+    margin-bottom: 20px !important;
+}
+
+form#register-form .get-code {
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.85);
+    letter-spacing: 0;
+    text-align: right;
+    float: right;
+    padding-right: 10px
+}
+
+form#register-form .tagers {
+    width: 1px;
+    height: 11px;
+    border: 1px solid rgba(0, 0, 0, 0.85);;
+    position: absolute;
+    top: 40%;
+    right: 24%;
+}
+
+form#register-form .down-ico {
+    display: inline-block;
+    height: 48px;
+    line-height: 48px;
+    padding-right: 10px;
+}
+
+form#register-form .controls:hover {
+    cursor: default;
+    color: rgb(3, 204, 255);
+}
+
+form#register-form .down-ico + ul {
+}
+
+form#register-form .yuchan_sel {
+    z-index: 999;
+    position: absolute;
+    /*margin: 0 0 0 79px;*/
+    right: 0;
+    padding-left: 0;
+    border-top: none;
+    background-color: #fff;
+    min-width: 100%;
+    border: 1px solid #E1E4E8;
+    border-top: none;
+}
+
+form#register-form .yuchan_sel > p {
+    padding: 10px 10px 10px 0;
+    text-align: right;
+    padding-right: 38px;
+    font-weight: bold;
+    width: 100%;
+}
+
+form#register-form .city-picker-span {
+    max-width: 70%;
+    float: right;
+}
+
+form#register-form .city-picker-dropdown {
+    min-width: 100%;
+    border-bottom: none;
+    /*float: right;*/
+}
+
+form#register-form .city-picker-span {
+    border-bottom: none;
+    height: 46px !important;
+    line-height: 46px !important;
+    text-align: right;
+    padding-right: 30px;
+}
+
+form#register-form .n-right .msg-wrap {
+    /*margin-top: 10px !important;*/
+}
+
+form#register-form button[type='submit']:hover {
+    border: none !important;
+}
+
+form#register-form button[type='submit']:focus {
+    border: none !important;
+}
+
+form#register-form button[type='submit'] {
+    margin-bottom: 50px;
+}
+
+#res .h-ti {
+    font-family: PingFangSC-Semibold;
+    font-size: 47px;
+    color: rgba(0, 0, 0, 0.75);
+    letter-spacing: 3.27px;
+    margin: 20px 0;
+    /*font-weight: 600;*/
+}
+
+#res-bt .box-t {
+    margin: 10% auto;
+}
+
+@media (min-width: 767px) {
+    #res-bt .res-bg {
+        background-image: url("../img/find_ys/位图3@2x@2x.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+#res-bt .res-bg img{
+    max-width: 100% !important;
+}
+#res-bt .res-bg img:nth-child(1) {
+    margin: 0 0 50px 0;
+}
+
+#res-bt .res-bg img:nth-child(2) {
+    margin: 10px 0 30px 20%;
+}
+
+#res-bt .res-bg img:nth-child(3) {
+    margin: 10px 0 30px 15%;
+}
