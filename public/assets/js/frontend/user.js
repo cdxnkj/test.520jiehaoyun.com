@@ -22,9 +22,10 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
                 });
                 $(".btn-captcha").data("url", $(this).data("send-url")).data("type", type);
             });
-
+            //获取验证码
+            Controller.getCode('#res .get-code');
             //为表单绑定事件
-            Form.api.bindevent($("#login-form"), function (data, ret) {
+            Form.api.bindevent($("#register-form"), function (data, ret) {
                 setTimeout(function () {
                     location.href = ret.url ? ret.url : "/";
                 }, 1000);
@@ -51,61 +52,111 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
             });
         },
         register: function () {
-            var form_arr = new Array();
-            //发送验证码
-            $('#res .cli-code').on('click', function () {
-                if (!(/^1[3456789]\d{9}$/.test($(this).closest('li').prev('li').find('span:last').text()))) {
-                    Toastr.error("手机号码有误");
-                    return false;
+
+            //本地验证未通过时提示
+            // $("#register-form").data("validator-options", validatoroptions);
+            //为表单绑定事件
+            Form.api.bindevent($("#register-form"), function (data, ret) {
+                setTimeout(function () {
+                    location.href = ret.url ? ret.url : "/";
+                }, 1000);
+            });
+
+            $('body').bind('click', function (event) {
+                // IE支持 event.srcElement ， FF支持 event.target
+                var evt = event.srcElement ? event.srcElement : event.target;
+                if (evt.id == 'hideYcq') return; // 如果是元素本身，则返回
+                else {
+                    $('#hideYcq').hide(); // 如不是则隐藏元素
                 }
-                var loads =  Layer.load(2);
 
-                Controller.resetCode();
-                // Fast.api.ajax()/
+            });
+            //获取验证码
+            Controller.getCode('#res .get-code');
+            //展开下拉
+            $('.down-ico').closest('.controls').on('click', function () {
+                event.stopPropagation();
 
-            })
-            $('.send-register').on('click', function () {
-
-
-                form_arr = [];
-                $('#res ul li[data-cod!="code"]').each(function () {
-                    var v = $.trim($(this).find('span:last').text());
-                    if (v == '') {
-                        Toastr.error('请将信息填写完整');
-                        form_arr = [];
-                        return false;
-                    }
-                    else {
-
-                        form_arr.push(v);
-
+                var _this = $(this); //option
+                $('.yuchan_sel').toggle();
+                $('#hideYcq p').each(function () {
+                    if ($.trim(_this.find('.se_v').attr('data-ycq')) == $.trim($(this).attr('data-ycq'))) {
+                        $(this).css({'color': '#ddd', 'cursor': 'no-drop'});
                     }
                 });
-                console.log(Controller.repPhone());
+                return false;
 
+            });
+            //预产期子节点
+            $('.yuchan_sel>p').on('click', function () {
+                //找到禁止的选项
+                var j;
+                $('.yuchan_sel p').each(function () {
+                    if ($(this).css('cursor') == 'no-drop') j = $(this);
+                });
+
+                var _this = $(this); //option
+
+                var v = _this.closest('.controls').find('.se_v'); //父级选项
+                if (_this.css('cursor') == 'no-drop') return false;
+                v.attr('data-ycq', _this.attr('data-ycq')).text(_this.text());
+                $('input[type="hidden"][name="baby_ycq"]').val(_this.text());
+
+                _this.attr('data-ycq', v.attr('data-ycq'));
+
+                j.css({'color': 'rgba(0, 0, 0, 0.65)', 'cursor': 'pointer'});
             });
 
 
-
         },
+        /**
+         * 验证码倒计时
+         */
         resetCode: function () {
             //倒计时
-            $('.cli-code').text(60+'(s)');
+            $('.cli-code').text(60 + '(s)');
 
             var second = 59;
             var timer = null;
             timer = setInterval(function () {
                 second -= 1;
                 if (second > 0) {
-                    $('.cli-code').html(second+'(s)').css("pointer-events","none");
+                    $('.get-code').html(second + '(s)').css("pointer-events", "none");
                 } else {
                     clearInterval(timer);
-                    $('.cli-code').text('获取验证码').css('pointer-events','');
+                    $('.get-code').text('获取验证码').css('pointer-events', '');
                     // $('#J_resetCode').hide();
                 }
             }, 1000);
 
 
+        },
+        /**
+         * 获取验证码
+         * @param el  节点元素
+         */
+        getCode:function(el){
+            //发送验证码
+            $(el).on('click', function () {
+                var phone = $('#res').find('input[name="mobile"]').val();
+                if (!(/^1[3456789]\d{9}$/.test(phone))) {
+                    Toastr.error("手机号码有误");
+                    return false;
+                }
+                var loads = Layer.load(2);
+                Controller.resetCode();
+                $.post('user/getCode', {phone: phone}, function (ret) {
+                    Layer.close(loads);
+                    if (ret.code == 1) {
+                        Layer.msg(ret.msg);
+                    }
+                    Layer.msg(ret.msg);
+
+                })
+
+                return false;
+
+            });
         },
         changepwd: function () {
             //本地验证未通过时提示

@@ -4,6 +4,7 @@ namespace app\index\controller;
 
 use app\common\controller\Frontend;
 use fast\Random;
+use think\Cache;
 use think\Config;
 use think\Cookie;
 use think\Hook;
@@ -17,14 +18,13 @@ use ucpaas\Ucpaas;
 class User extends Frontend
 {
     protected $layout = 'default';
-    protected $noNeedLogin = ['login', 'register', 'third'];
+    protected $noNeedLogin = ['login', 'register', 'third', 'getCode'];
     protected $noNeedRight = ['*'];
 
     public function _initialize()
     {
         parent::_initialize();
-       /* $auth = $this->auth;
-
+        $auth = $this->auth;
         if (!Config::get('fastadmin.usercenter')) {
             $this->error(__('User center already closed'));
         }
@@ -46,7 +46,7 @@ class User extends Frontend
         Hook::add('user_logout_successed', function ($user) use ($auth) {
             Cookie::delete('uid');
             Cookie::delete('token');
-        });*/
+        });
     }
 
     /**
@@ -73,49 +73,73 @@ class User extends Frontend
     }
 
     /**
+     * Notes:获取短信验证码
+     * User: glen9
+     * Date: 2019/8/25
+     * Time: 13:07
+     * @return string
+     */
+    public function getCode()
+    {
+        if ($this->request->isPost()) {
+            $phone = $this->request->post()['phone'];
+            $code = Random::numeric();
+//            pr(Cache::get('reg_code'));die;
+            $send_code_sta = json_decode(send_sms_code('496022', $code, $phone), true);
+            if ($send_code_sta['code'] == '0' && $send_code_sta['msg'] == 'OK') {
+                return ['msg' => '发送成功', 'code' => 1, 'result' => Cache::remember('reg_code', function () use ($phone, $code) {
+                    return $code;
+                }, 60)];
+            }
+            return ['msg' => $send_code_sta['msg'], 'code' => $send_code_sta['code'], 'result' => ''];
+
+        }
+    }
+
+    /**
      * 注册会员
      */
     public function register()
     {
-        $c = '2342';
-        $c =  send_sms_code('173289','sdfasd','15208369501');
-        pr($c);die;
         $url = $this->request->request('url', '', 'trim');
         if ($this->auth->id) {
             $this->success(__('You\'ve logged in, do not login again'), $url ? $url : url('user/index'));
         }
         if ($this->request->isPost()) {
-            $username = $this->request->post('username');
-            $password = $this->request->post('password');
-            $email = $this->request->post('email');
+            if ($this->request->post('code') != Cache::get('reg_code')) {
+                $this->error('验证码错误或已过期');
+            }
+
+
             $mobile = $this->request->post('mobile', '');
-            $captcha = $this->request->post('captcha');
+            $username = $this->request->post('username');
+            $baby_nickname = $this->request->post('baby_nickname');
+            $baby_ycq = $this->request->post('baby_ycq');
+            $services_address = $this->request->post('services_address');
             $token = $this->request->post('__token__');
             $rule = [
-                'username'  => 'require|length:3,30',
-                'password'  => 'require|length:6,30',
-                'email'     => 'require|email',
-                'mobile'    => 'regex:/^1\d{10}$/',
-                'captcha'   => 'require|captcha',
+                'mobile' => 'regex:/^1\d{10}$/',
+                'username' => 'require|length:3,30',
+                'baby_nickname' => 'require',
+                'baby_ycq' => 'require',
+                'services_address' => 'require',
                 '__token__' => 'require|token',
             ];
 
             $msg = [
+                'mobile' => 'Mobile is incorrect',
                 'username.require' => 'Username can not be empty',
-                'username.length'  => 'Username must be 3 to 30 characters',
-                'password.require' => 'Password can not be empty',
-                'password.length'  => 'Password must be 6 to 30 characters',
-                'captcha.require'  => 'Captcha can not be empty',
-                'captcha.captcha'  => 'Captcha is incorrect',
-                'email'            => 'Email is incorrect',
-                'mobile'           => 'Mobile is incorrect',
+                'username.length' => 'Username must be 3 to 30 characters',
+                'baby_nickname.require' => '宝宝昵称不能为空',
+                'baby_ycq.require' => '预产期不能为空',
+                'services_address.require' => '服务地址不能为空',
             ];
             $data = [
-                'username'  => $username,
-                'password'  => $password,
-                'email'     => $email,
-                'mobile'    => $mobile,
-                'captcha'   => $captcha,
+                'mobile' => $mobile,
+                'username' => $username,
+                'baby_nickname' => $baby_nickname,
+                'baby_ycq' => $baby_ycq,
+                'services_address' => $services_address,
                 '__token__' => $token,
             ];
             $validate = new Validate($rule, $msg);
@@ -123,8 +147,10 @@ class User extends Frontend
             if (!$result) {
                 $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
             }
-            if ($this->auth->register($username, $password, $email, $mobile)) {
+            if ($this->auth->register($username, '', '', $mobile, ['baby_nickname' => $baby_nickname, 'baby_ycq' => $baby_ycq, 'services_address' => $services_address])) {
                 $this->success(__('Sign up successful'), $url ? $url : url('user/index'));
+                //注册成功删除缓存
+                Cache::rm('reg_code');
             } else {
                 $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);
             }
@@ -145,31 +171,39 @@ class User extends Frontend
      */
     public function login()
     {
-       /* $url = $this->request->request('url', '', 'trim');
+        $url = $this->request->request('url', '', 'trim');
         if ($this->auth->id) {
-            $this->success(__('You\'ve logged in, do not login again'), $url ? $url : url('user/index'));
+            $this->success(__('You\'ve logged in, do not login again'), $url ? $url : url('/'));
         }
         if ($this->request->isPost()) {
-            $account = $this->request->post('account');
-            $password = $this->request->post('password');
-            $keeplogin = (int)$this->request->post('keeplogin');
+            $mobile = $this->request->post('mobile');
+            $code = $this->request->post('code');
+
+            $captcha = $this->request->post('captcha');
             $token = $this->request->post('__token__');
+
+
+//            pr(Cache::get('reg_code'));
+//            die;
             $rule = [
-                'account'   => 'require|length:3,50',
-                'password'  => 'require|length:6,30',
+                'mobile' => 'regex:/^1\d{10}$/',
+                'captcha' => 'require|captcha',
                 '__token__' => 'require|token',
+                'code' => 'require'
             ];
 
             $msg = [
-                'account.require'  => 'Account can not be empty',
-                'account.length'   => 'Account must be 3 to 50 characters',
-                'password.require' => 'Password can not be empty',
-                'password.length'  => 'Password must be 6 to 30 characters',
+                'mobile' => 'Mobile is incorrect',
+                'captcha.require' => '图形验证码不能为空',
+                'captcha.captcha' => '图形验证码错误',
+                'code' => '手机验证码不能为空',
+
             ];
             $data = [
-                'account'   => $account,
-                'password'  => $password,
+                'mobile' => $mobile,
+                'captcha' => $captcha,
                 '__token__' => $token,
+                'code' => $code
             ];
             $validate = new Validate($rule, $msg);
             $result = $validate->check($data);
@@ -177,8 +211,14 @@ class User extends Frontend
                 $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
                 return false;
             }
-            if ($this->auth->login($account, $password)) {
-                $this->success(__('Logged in successful'), $url ? $url : url('user/index'));
+            if ($code != Cache::get('reg_code')) {
+                $this->error('验证码错误或已过期');
+                return false;
+            }
+            if ($this->auth->login($mobile)) {
+                //登录成功删除缓存
+                Cache::rm('reg_code');
+                $this->success(__('Logged in successful'), $url ? $url : url('/'));
             } else {
                 $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);
             }
@@ -190,7 +230,7 @@ class User extends Frontend
             $url = $referer;
         }
         $this->view->assign('url', $url);
-        $this->view->assign('title', __('Login'));*/
+        $this->view->assign('title', __('Login'));
         return $this->view->fetch();
     }
 
@@ -224,23 +264,23 @@ class User extends Frontend
             $renewpassword = $this->request->post("renewpassword");
             $token = $this->request->post('__token__');
             $rule = [
-                'oldpassword'   => 'require|length:6,30',
-                'newpassword'   => 'require|length:6,30',
+                'oldpassword' => 'require|length:6,30',
+                'newpassword' => 'require|length:6,30',
                 'renewpassword' => 'require|length:6,30|confirm:newpassword',
-                '__token__'     => 'token',
+                '__token__' => 'token',
             ];
 
             $msg = [
             ];
             $data = [
-                'oldpassword'   => $oldpassword,
-                'newpassword'   => $newpassword,
+                'oldpassword' => $oldpassword,
+                'newpassword' => $newpassword,
                 'renewpassword' => $renewpassword,
-                '__token__'     => $token,
+                '__token__' => $token,
             ];
             $field = [
-                'oldpassword'   => __('Old password'),
-                'newpassword'   => __('New password'),
+                'oldpassword' => __('Old password'),
+                'newpassword' => __('New password'),
                 'renewpassword' => __('Renew password')
             ];
             $validate = new Validate($rule, $msg, $field);

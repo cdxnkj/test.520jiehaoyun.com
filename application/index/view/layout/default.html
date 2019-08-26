@@ -31,36 +31,21 @@
                 <div class="collapse navbar-collapse" id="header-navbar">
                     <ul class="nav navbar-nav navbar-right">
 
+                        <li><a href="/" target="_blank" >{:__('首页')}</a></li>
 
                         <li><a href="/zys" target="_blank" >{:__('找月嫂')}</a></li>
-                        <li><a href="/zyrs" target="_blank">{:__('找月嫂')}</a></li>
+                        <li><a href="/zyrs" target="_blank">{:__('找育儿嫂')}</a></li>
                         <li><a href="/px" target="_blank">{:__('培训')}</a></li>
                         <li><a href="/address" target="_blank">{:__('门店地址')}</a></li>
+                        {if $user}
+                        <li> <a href=""  ><img src="{$user.avatar|cdnurl}" alt="" class=" " width="20" style="border-radius: 50%;"> {$user.mobile}</a></li>
 
-                        <li><a href="" target="_blank">登录 </a>  <span class="nav_slipt"></span></li>
+                        {else /}
+                        <li class="lo"><a href="" target="_blank" >登录 </a>  <span class="nav_slipt"></span></li>
 
-                        <li><a href="{:url('user/register')}">注册</a></li>
-                      <!--  <li class="dropdown">
-                            {if $user}
-                            <a href="{:url('user/index')}" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 10px;height: 50px;">
-                                <span class="avatar-img"><img src="{$user.avatar|cdnurl}" alt=""></span>
-                            </a>
-                            {else /}
-                            <a href="{:url('user/index')}" class="dropdown-toggle" data-toggle="dropdown">{:__('User center')} <b class="caret"></b></a>
-                            {/if}
-                            <ul class="dropdown-menu">
-                                {if $user}
-                                <li><a href="{:url('user/index')}"><i class="fa fa-user-circle fa-fw"></i>{:__('User center')}</a></li>
-                                <li><a href="{:url('user/profile')}"><i class="fa fa-user-o fa-fw"></i>{:__('Profile')}</a></li>
-                                <li><a href="{:url('user/changepwd')}"><i class="fa fa-key fa-fw"></i>{:__('Change password')}</a></li>
-                                <li><a href="{:url('user/logout')}"><i class="fa fa-sign-out fa-fw"></i>{:__('Sign out')}</a></li>
-                                {else /}
-                                <li><a href="{:url('user/login')}"><i class="fa fa-sign-in fa-fw"></i> {:__('Sign in')}</a></li>
-                                <li><a href="{:url('user/register')}"><i class="fa fa-user-o fa-fw"></i> {:__('Sign up')}</a></li>
-                                {/if}
+                        <li class="re"><a href="{:url('user/register')}"  >注册</a></li>
 
-                            </ul>
-                        </li>-->
+                        {/if}
                     </ul>
                 </div>
             </div>

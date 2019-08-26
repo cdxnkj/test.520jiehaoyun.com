@@ -2,55 +2,84 @@
 
 <section id="res">
     <div class="container ">
-        <div class="row logo_register center-block">
+        <div class="row logo_register  ">
             <div class="col-md-6  col-md-offset-3 ">
                 <img src="__CDN__/assets/img/WechatIMG9@2x.png" alt="" width="198" class="center-block">
-                <div class="res_box center-block  ">
-                    <div class="row">
+                <div class="res_box    ">
+                    <div class="row   ">
                         <div class="col-md-8 col-md-offset-2">
                             <h3 class="text-center">注册新账户</h3>
-                            <div style=" ">
-                                <ul>
-                                    <li>
-                                        <span class="text-left p_l_10">手机号码</span>
-                                        <span contenteditable="true"    class="text-right p_r_10 res_form_note phone">
+                            <form name="form1" id="register-form" class="form-vertical" method="POST" action="">
+                                <input type="hidden" name="invite_user_id" value="0" />
+                                <input type="hidden" name="url" value="{$url}" />
+                                {:token()}
+                                <div class="form-group">
+                                    <!--<label class="control-label required">{:__('Email')}<span class="text-success"></span></label>-->
+                                    <div class="controls">
+                                        <span style="display: inline-block" class="label-left">手机号 </span>
+                                        <input type="text" name="mobile" id="c-mobile" data-rule="required:mobile"  class="form-control input-lg"  >
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
 
-                                        </span>
-                                    </li>
-                                    <li data-cod="code">
-                                        <span class="text-left p_l_10"> 手机验证码</span>
-                                        <span class="text-right p_r_10 cli-code " >
-                                          获取验证码
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="text-left p_l_10">联系人&nbsp;&nbsp;</span>
-                                        <span contenteditable="true"   class="text-right p_r_10 res_form_note">
+                                    <div class="controls" style="position: relative">
 
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="text-left p_l_10">宝宝昵称</span>
-                                        <span contenteditable="true"   class="text-right p_r_10 res_form_note">
+                                        <input type="text" style="text-align: left;padding-left: 10px" data-rule="required"  id="c-code" name="code"  class="form-control input-lg pull-left text-left" placeholder="{:__('请输入验证码')}">
+                                       <span class="tagers"></span> <span style="" class="label-left get-code"  >获取验证码</span>
 
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="text-left p_l_10" style="margin-right: 10px">预产期</span>
-                                        <span contenteditable="true" class="text-right p_r_10 res_form_note">
+                                        <!--<p class="help-block"></p>-->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="controls">
+                                        <span style="display: inline-block" class="label-left">您的姓名 </span>
+                                        <input type="text" name="username" id="c-username" data-rule="required"   class="form-control input-lg"  >
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="controls">
+                                        <span style="display: inline-block" class="label-left">宝宝昵称 </span>
+                                        <input type="text" name="baby_nickname" id="c-baby_nickname"  data-rule="required"  class="form-control input-lg"  >
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="controls" style="position: relative">
+                                        <span style="display: inline-block" class="label-left">预产期 </span>
+                                       <!-- <select name="" id="" class="">
+                                            <option value="">一个月</option>
+                                            <option value="">三个月</option>
+                                            <option value="">六个月</option>
 
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="text-left p_l_10">服务地址</span>
-                                        <span contenteditable="true" class="text-right p_r_10 res_form_note">
+                                        </select>-->
 
-                                        </span>
-                                    </li>
-                                </ul>
-                                <button class="btn btn-lg send-register" style="width: 100%;background: #03CCFF;color: #fff;min-height: 48px;    margin: 10px 0 30px 0;">注册</button>
-                                <p class="text-center"><span>已有账号?</span> &nbsp;<a href="">立马登录</a></p>
-                            </div>
+                                       <span class="se_v" data-ycq="三个月" style="position: absolute;right: 30px;top:40%;">三个月</span> <span class="glyphicon glyphicon-menu-down pull-right down-ico"></span>
+                                        <ul>
+                                            <li class="yuchan_sel" id="hideYcq" style="display: none ">
+                                                <p data-ycq="一个月">一个月</p>
+                                                <p data-ycq="三个月">三个月</p>
+                                                <p data-ycq="六个月">六个月</p>
+                                            </li>
+                                        </ul>
+
+                                        <input type="hidden" name="baby_ycq" id="ycq"  value="三个月" class="form-control input-lg"  >
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="controls" style="position: relative">
+                                        <span style="display: inline-block" class="label-left">服务地址 </span>
+                                        <input type="text" name="services_address" data-toggle="city-picker" id="c-services_address"  data-rule="required"  class="form-control input-lg"  >
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" style="height: 48px;background-color: rgb(3, 204, 255)" class="btn btn-primary btn-lg btn-block">{:__('Sign up')}</button>
+                                </div>
+                                <p class="text-center " style="padding: 15px 0 50px 0;"><span>已有账号？</span><span><a href="{:url('user/login')}">去登录</a></span></p>
+                            </form>
                         </div>
                     </div>
 
@@ -60,3 +89,4 @@
         </div>
     </div>
 </section>
+

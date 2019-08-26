@@ -35,6 +35,115 @@
     padding: 50px 0;
 }
 
+form#register-form .controls {
+    border: 1px solid #E1E4E8;
+    border-radius: 4px;
+    height: 48px;
+}
+
+form#register-form .controls input {
+    width: 70%;
+    float: right;
+    border: none;
+    text-align: right;
+    max-height: 46px;
+    margin-top: 3px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+    letter-spacing: 0;
+    /*margin-bottom:0px;*/
+    /*border: 1px solid #E1E4E8;*/
+}
+
+form#register-form .label-left {
+    width: 30%;
+    display: inline-block;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 10px;
+}
+
+form#register-form .form-group {
+    margin-bottom: 20px !important;
+}
+
+form#register-form .get-code {
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.85);
+    letter-spacing: 0;
+    text-align: right;
+    float: right;
+    padding-right: 10px
+}
+
+form#register-form .tagers {
+    width: 1px;
+    height: 11px;
+    border: 1px solid rgba(0, 0, 0, 0.85);;
+    position: absolute;
+    top: 40%;
+    right: 24%;
+}
+
+form#register-form .down-ico {
+    display: inline-block;
+    height: 48px;
+    line-height: 48px;
+    padding-right: 10px;
+}
+form#register-form .down-ico:hover,form#register-form .yuchan_sel > p:hover,form#register-form .get-code:hover {
+   cursor: pointer;
+    color: rgb(3, 204, 255);
+}
+form#register-form .down-ico+ul{
+}
+form#register-form .yuchan_sel {
+    z-index: 999;
+    position: absolute;
+    /*margin: 0 0 0 79px;*/
+    right: 0;
+    padding-left: 0;
+    border-top: none;
+    background-color: #fff;
+    min-width: 100%;
+    border: 1px solid #E1E4E8;
+    border-top: none;
+}
+
+form#register-form .yuchan_sel > p {
+    padding: 10px 10px 10px 0;
+    text-align: right;
+    padding-right: 38px;
+    font-weight: bold;
+    width: 100%;
+}
+form#register-form .city-picker-span{
+    max-width: 70%;
+    float: right;
+}
+form#register-form  .city-picker-dropdown{
+    min-width: 100%;
+    border-bottom:none;
+    /*float: right;*/
+}
+form#register-form  .city-picker-span{
+    border-bottom:none;
+    height: 46px !important;
+    line-height: 46px !important;
+    text-align: right;
+    padding-right: 30px;
+}
+form#register-form .n-right .msg-wrap{
+    /*margin-top: 10px !important;*/
+}
+form#register-form button[type='submit']:hover{
+    border: none !important;
+}
+form#register-form button[type='submit']:focus{
+    border: none !important;
+}
+/*
 #res .res_box ul li {
     background: rgba(255, 255, 255, 0.00);
     border: 1px solid #E1E4E8;
@@ -56,16 +165,17 @@
 }
 
 #res .res_box ul li span:nth-child(1):not(.res_form_note) {
-    min-width: 20%;
+    min-width: 70%;
 }
 
-#res .res_box ul li span.res_form_note:focus {
+#res .res_box ul li span.res_form_note, #res .res_box ul li span:first-child:focus {
     outline: none !important;
 }
 
 #res .res_box ul li:nth-child(2) span:nth-child(2) {
     display: inline-block;
-    width: 77%;
+    width: 30%;
+    max-width: 30%;
     text-align: right;
     float: right;
     font-family: PingFangSC-Medium;
@@ -74,7 +184,13 @@
     letter-spacing: 0;
     font-weight: bold;
 }
-
+#res .res_box ul li:nth-child(2)>span:first-child{
+    height: 48px;
+    display: inline-block;
+    max-width: 70%;
+    overflow: hidden;
+    color: #ddd;
+}
 #res .res_box ul li:nth-child(2) span:nth-child(2) > span {
     width: 1px;
     border: 1px solid rgba(0, 0, 0, 0.85);
@@ -85,14 +201,17 @@
 
     font-family: PingFangSC-Medium;
 }
-#res .res_box ul li:nth-child(2) span:nth-child(2):hover{
+
+#res .res_box ul li:nth-child(2) span:nth-child(2):hover {
     cursor: pointer;
     color: rgb(3, 204, 255);
 
 }
-#res .res_box .send-register~p a{
+
+#res .res_box .send-register ~ p a {
     font-weight: bold;
 }
-#res .res_box .send-register~p{
+
+#res .res_box .send-register ~ p {
     margin-bottom: 60px !important;
-}
+}*/

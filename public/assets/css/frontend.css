@@ -11,6 +11,7 @@ html,
 body {
     height: 100%;
 }
+
 :root {
     --blue: #007bff;
     --indigo: #6610f2;
@@ -108,10 +109,7 @@ address {
     line-height: inherit;
 }
 
-
-
-
-li{
+li {
     list-style: none;
 }
 
@@ -153,7 +151,6 @@ sup {
     top: -.5em;
 }
 
-
 /*body {
   padding-top: 50px;
   font-size: 13px;
@@ -175,7 +172,7 @@ sup {
     font-weight: bold;
 }
 
-.navbar-nav li:nth-last-child(2) > a {
+.navbar-nav li.lo > a, .navbar-nav li.re > a {
     /*color: rgba(0, 0, 0, 0.65);!important;*/
 
     font-family: PingFangSC-Medium;
@@ -185,8 +182,6 @@ sup {
     padding-right: 8px;
 
 }
-
-
 
 .navbar-nav li:last-child > a {
     /*color: rgba(0, 0, 0, 0.65);!important;*/
@@ -205,6 +200,7 @@ sup {
     right: 0;
     top: 20px;
 }
+
 .navbar-nav li > a:hover {
     background-color: transparent;
     color: rgb(3, 204, 255);
@@ -482,27 +478,30 @@ form.form-horizontal .control-label {
     margin-right: 0;
 }
 
-footer.footer .row   p:first-child{
+footer.footer .row p:first-child {
 
     font-family: PingFangSC-Semibold;
     font-size: 18px;
-    color: #FFFFFF  ;
+    color: #FFFFFF;
     letter-spacing: 1.13px;
     line-height: 30px;
     margin-bottom: 0 !important;
 }
-footer.footer p.footer_info{
+
+footer.footer p.footer_info {
 
     font-family: PingFangSC-Regular;
     font-size: 14px;
-    color: rgba(255,255,255,0.65) !important;
+    color: rgba(255, 255, 255, 0.65) !important;
     letter-spacing: 0.88px;
     line-height: 24px;
 }
-footer.footer ul li{
+
+footer.footer ul li {
     padding: 0;
 }
-footer.footer ul li img{
+
+footer.footer ul li img {
     margin: 0 16px 10px 16px;
 }
 
