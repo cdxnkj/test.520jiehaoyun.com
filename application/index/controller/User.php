@@ -89,7 +89,7 @@ class User extends Frontend
             if ($send_code_sta['code'] == '0' && $send_code_sta['msg'] == 'OK') {
                 return ['msg' => '发送成功', 'code' => 1, 'result' => Cache::remember('reg_code', function () use ($phone, $code) {
                     return $code;
-                }, 60)];
+                }, 180)];
             }
             return ['msg' => $send_code_sta['msg'], 'code' => $send_code_sta['code'], 'result' => ''];
 

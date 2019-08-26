@@ -1,0 +1,154 @@
+{css href="/assets/css/find_ys.css"}
+<section id="res">
+    <div class="container">
+        <div class="row ">
+
+            <div class="col-md-5 form-box col-xs-12">
+                <div class="row">
+                    <p class="find-ys-title text-left col-md-8 col-md-offset-2 ">
+                        <span class="title">填写信息</span>
+                        <span>精准推荐符合您要求的月嫂</span>
+                    </p>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form name="form1" id="register-form" class="form-vertical" method="POST" action="">
+
+                            {:token()}
+
+                            <div class="form-group">
+                                <div class="controls" style="position: relative">
+                                    <span style="display: inline-block" class="label-left">月嫂经验 </span>
+                                    <!-- <select name="" id="" class="">
+                                         <option value="">一个月</option>
+                                         <option value="">三个月</option>
+                                         <option value="">六个月</option>
+
+                                     </select>-->
+
+                                    <span class="se_v" data-ycq="三个月" style="position: absolute;right: 30px;top:40%;">1-3年</span>
+                                    <span class="glyphicon glyphicon-menu-down pull-right down-ico"></span>
+                                    <ul>
+                                        <li class="yuchan_sel" id="hideYcq" style="display: none ">
+                                            <p data-ycq="1-3年">1-3年</p>
+
+                                            <p data-ycq="3-5年">3-5年</p>
+                                            <p data-ycq="5-8年">5-8年</p>
+                                            <p data-ycq="8年以上">8年以上</p>
+                                        </li>
+                                    </ul>
+
+                                    <input type="hidden" name="baby_ycq" id="ycq" value="三个月"
+                                           class="form-control input-lg">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="controls" style="position: relative">
+                                    <span style="display: inline-block" class="label-left">护理经验 </span>
+                                    <!-- <select name="" id="" class="">
+                                         <option value="">一个月</option>
+                                         <option value="">三个月</option>
+                                         <option value="">六个月</option>
+
+                                     </select>-->
+
+                                    <span class="se_v" data-ycq="三个月" style="position: absolute;right: 30px;top:40%;">1-3年</span>
+                                    <span class="glyphicon glyphicon-menu-down pull-right down-ico"></span>
+                                    <ul>
+                                        <li class="yuchan_sel" id="hideYcq" style="display: none ">
+                                            <p data-ycq="1-3年">1-3年</p>
+
+                                            <p data-ycq="3-5年">3-5年</p>
+                                            <p data-ycq="5-8年">5-8年</p>
+                                            <p data-ycq="8年以上">8年以上</p>
+                                        </li>
+                                    </ul>
+
+                                    <input type="hidden" name="baby_ycq" id="ycq" value="三个月"
+                                           class="form-control input-lg">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="controls" style="position: relative">
+                                    <span style="display: inline-block" class="label-left">月嫂年龄 </span>
+                                    <!-- <select name="" id="" class="">
+                                         <option value="">一个月</option>
+                                         <option value="">三个月</option>
+                                         <option value="">六个月</option>
+
+                                     </select>-->
+
+                                    <span class="se_v" data-ycq="三个月"
+                                          style="position: absolute;right: 30px;top:40%;color: #bbb;">请选择</span> <span
+                                        class="glyphicon glyphicon-menu-down pull-right down-ico"></span>
+                                    <ul>
+                                        <li class="yuchan_sel" id="hideYcq" style="display: none ">
+                                            <p data-ycq="1-3年">1-3年</p>
+
+                                            <p data-ycq="3-5年">3-5年</p>
+                                            <p data-ycq="5-8年">5-8年</p>
+                                            <p data-ycq="8年以上">8年以上</p>
+                                        </li>
+                                    </ul>
+
+                                    <input type="hidden" name="baby_ycq" id="ycq" value="三个月"
+                                           class="form-control input-lg">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+
+                                <!--<label class="control-label required">{:__('Email')}<span class="text-success"></span></label>-->
+                                <div class="controls">
+                                    <span style="display: inline-block" class="label-left">您的电话 </span>
+                                    <input type="text" name="mobile" id="c-mobile" data-rule="required:mobile"
+                                           placeholder="请输入" class="form-control input-lg">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" style="height: 48px;background-color: rgb(3, 204, 255)"
+                                        class="btn btn-primary btn-lg btn-block">{:__('推荐月嫂')}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-5 col-xs-12 col-md-offset-1">
+
+                <div class="h-ti">专业产褥期护理</div>
+                <img src="__CDN__/assets/img/find_ys/ti.png" class="img-responsive" alt="">
+
+                <img src="__CDN__/assets/img/find_ys/编组 2@2x.png" class="img-circle hidden-xs img-responsive" alt=""
+                     width="233" style="padding: 35px 0 0 20px;">
+                <img src="__CDN__/assets/img/find_ys/编组 2@2x.png" class="visible-xs img-responsive center-block" alt=""
+                     width="233" style="padding: 20px 0;">
+
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<section id="res-bt">
+    <div class="container box-t">
+        <div class="row res-bg">
+            <div class="col-md-5 col-md-offset-6  ">
+
+                <img src="__CDN__/assets/img/find_ys/编组 14.png" class="hidden-xs" alt=""  >
+                <img src="__CDN__/assets/img/find_ys/编组 13.png" class="hidden-xs" alt="">
+                <img src="__CDN__/assets/img/find_ys/编组 12.png" class="hidden-xs" alt="">
+
+                <img src="__CDN__/assets/img/find_ys/编组 14.png" class="visible-xs img-responsive" alt=""  >
+                <img src="__CDN__/assets/img/find_ys/编组 13.png" class="visible-xs img-responsive" alt="" style="margin: 30px 0 ;">
+                <img src="__CDN__/assets/img/find_ys/编组 12.png" class="visible-xs img-responsive" alt="">
+            </div>
+        </div>
+    </div>
+</section>
