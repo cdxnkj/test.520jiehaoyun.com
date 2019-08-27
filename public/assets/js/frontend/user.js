@@ -8,7 +8,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
     };
     var Controller = {
         login: function () {
-
+            Controller.checkPhone($("input[type='text'][name='mobile']"));
 
             //本地验证未通过时提示
             $("#login-form").data("validator-options", validatoroptions);
@@ -135,7 +135,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
          * 获取验证码
          * @param el  节点元素
          */
-        getCode:function(el){
+        getCode: function (el) {
             //发送验证码
             $(el).on('click', function () {
                 var phone = $('#res').find('input[name="mobile"]').val();
@@ -157,6 +157,17 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
 
                 return false;
 
+            });
+        },
+        checkPhone: function (phoneEl) {
+            var phonCheck = false;
+            phoneEl.blur(function () {
+                $.post('user/checkPhone',{mobile: $.trim($(this).val())},function (res) {
+                    if(res.code==0){
+                        Toastr.error(res.msg); return false;
+                    }
+                })
+                console.log();
             });
         },
         changepwd: function () {

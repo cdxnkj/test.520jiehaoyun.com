@@ -115,15 +115,15 @@ form#register-form .down-ico {
     padding-right: 10px;
 }
 
-form#register-form .controls:hover {
+form#register-form .controls{
     cursor: default;
-    color: rgb(3, 204, 255);
+
 }
 
 form#register-form .down-ico + ul {
 }
 
-form#register-form .yuchan_sel {
+form#register-form .form_sel {
     z-index: 999;
     position: absolute;
     /*margin: 0 0 0 79px;*/
@@ -136,36 +136,19 @@ form#register-form .yuchan_sel {
     border-top: none;
 }
 
-form#register-form .yuchan_sel > p {
+form#register-form .form_sel > p {
     padding: 10px 10px 10px 0;
     text-align: right;
-    padding-right: 38px;
+    padding-right: 30px;
     font-weight: bold;
     width: 100%;
 }
-
-form#register-form .city-picker-span {
-    max-width: 70%;
-    float: right;
+form#register-form .form_sel > p:hover{
+    cursor: pointer;
+    color: rgb(3, 204, 255);
 }
 
-form#register-form .city-picker-dropdown {
-    min-width: 100%;
-    border-bottom: none;
-    /*float: right;*/
-}
 
-form#register-form .city-picker-span {
-    border-bottom: none;
-    height: 46px !important;
-    line-height: 46px !important;
-    text-align: right;
-    padding-right: 30px;
-}
-
-form#register-form .n-right .msg-wrap {
-    /*margin-top: 10px !important;*/
-}
 
 form#register-form button[type='submit']:hover {
     border: none !important;
