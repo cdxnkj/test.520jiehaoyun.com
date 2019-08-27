@@ -7,6 +7,7 @@ use fast\Random;
 use think\Cache;
 use think\Config;
 use think\Cookie;
+use think\Db;
 use think\Hook;
 use think\Session;
 use think\Validate;
@@ -18,7 +19,7 @@ use ucpaas\Ucpaas;
 class User extends Frontend
 {
     protected $layout = 'default';
-    protected $noNeedLogin = ['login', 'register', 'third', 'getCode'];
+    protected $noNeedLogin = ['login', 'register', 'third', 'getCode', 'checkPhone'];
     protected $noNeedRight = ['*'];
 
     public function _initialize()
@@ -94,6 +95,12 @@ class User extends Frontend
             return ['msg' => $send_code_sta['msg'], 'code' => $send_code_sta['code'], 'result' => ''];
 
         }
+    }
+
+    public function checkPhone()
+    {
+        $mobile = $this->request->post()['mobile'];
+        return Db::name('user')->where(['mobile' => $mobile])->count() ? ['msg' => '', 'code' => 1, 'result' => ''] : ['msg' => '账号不存在，请先注册', 'code' => 0, 'result' => ''];
     }
 
     /**

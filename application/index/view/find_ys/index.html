@@ -20,53 +20,43 @@
                             <div class="form-group">
                                 <div class="controls" style="position: relative">
                                     <span style="display: inline-block" class="label-left">月嫂经验 </span>
-                                    <!-- <select name="" id="" class="">
-                                         <option value="">一个月</option>
-                                         <option value="">三个月</option>
-                                         <option value="">六个月</option>
-
-                                     </select>-->
-
-                                    <span class="se_v" data-ycq="三个月" style="position: absolute;right: 30px;top:40%;">1-3年</span>
+                                    <span class="se_v"  style="position: absolute;right: 30px;top:40%;">1-3年</span>
                                     <span class="glyphicon glyphicon-menu-down pull-right down-ico"></span>
                                     <ul>
-                                        <li class="yuchan_sel" id="hideYcq" style="display: none ">
-                                            <p data-ycq="1-3年">1-3年</p>
+                                        <li class="form_sel" id="hideYsjy" style="display: none ">
+                                            <p>不限</p>
 
-                                            <p data-ycq="3-5年">3-5年</p>
-                                            <p data-ycq="5-8年">5-8年</p>
-                                            <p data-ycq="8年以上">8年以上</p>
+                                            <p>1-3年</p>
+
+                                            <p>3-5年</p>
+                                            <p>5-8年</p>
+                                            <p>8年以上</p>
                                         </li>
                                     </ul>
 
-                                    <input type="hidden" name="baby_ycq" id="ycq" value="三个月"
-                                           class="form-control input-lg">
+                                    <input type="hidden" name="ysjy"   value="1-3年" class="form-control input-lg">
+
                                     <p class="help-block"></p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="controls" style="position: relative">
-                                    <span style="display: inline-block" class="label-left">护理经验 </span>
-                                    <!-- <select name="" id="" class="">
-                                         <option value="">一个月</option>
-                                         <option value="">三个月</option>
-                                         <option value="">六个月</option>
-
-                                     </select>-->
-
-                                    <span class="se_v" data-ycq="三个月" style="position: absolute;right: 30px;top:40%;">1-3年</span>
+                                    <span style="display: inline-block" class="label-left">特殊产妇 </span>
+                                    <span class="se_v" data-ycq="三个月" style="position: absolute;right: 30px;top:40%;">不限</span>
                                     <span class="glyphicon glyphicon-menu-down pull-right down-ico"></span>
                                     <ul>
-                                        <li class="yuchan_sel" id="hideYcq" style="display: none ">
-                                            <p data-ycq="1-3年">1-3年</p>
+                                        <li class="form_sel" id="hideHljy" style="display: none ">
+                                            <p>不限</p>
 
-                                            <p data-ycq="3-5年">3-5年</p>
-                                            <p data-ycq="5-8年">5-8年</p>
-                                            <p data-ycq="8年以上">8年以上</p>
+                                            <p>单胞胎</p>
+                                            <p>双胞胎</p>
+                                            <p>早产儿</p>
+                                            <p>特殊产妇</p>
+
                                         </li>
                                     </ul>
 
-                                    <input type="hidden" name="baby_ycq" id="ycq" value="三个月"
+                                    <input type="hidden" name="hljy" id="hljy" value="特殊产妇"
                                            class="form-control input-lg">
                                     <p class="help-block"></p>
                                 </div>
@@ -74,27 +64,20 @@
                             <div class="form-group">
                                 <div class="controls" style="position: relative">
                                     <span style="display: inline-block" class="label-left">月嫂年龄 </span>
-                                    <!-- <select name="" id="" class="">
-                                         <option value="">一个月</option>
-                                         <option value="">三个月</option>
-                                         <option value="">六个月</option>
+                                    <span class="se_v"  style="position: absolute;right: 30px;top:40%;">请选择</span>
+                                           <span class="glyphicon glyphicon-menu-down pull-right down-ico"></span>
 
-                                     </select>-->
-
-                                    <span class="se_v" data-ycq="三个月"
-                                          style="position: absolute;right: 30px;top:40%;color: #bbb;">请选择</span> <span
-                                        class="glyphicon glyphicon-menu-down pull-right down-ico"></span>
                                     <ul>
-                                        <li class="yuchan_sel" id="hideYcq" style="display: none ">
-                                            <p data-ycq="1-3年">1-3年</p>
+                                        <li class="form_sel" id="hideYsnl" style="display: none ">
+                                            <p>不限</p>
 
-                                            <p data-ycq="3-5年">3-5年</p>
-                                            <p data-ycq="5-8年">5-8年</p>
-                                            <p data-ycq="8年以上">8年以上</p>
+                                            <p>35岁以下</p>
+                                            <p>35-40岁</p>
+                                            <p>45岁以上</p>
                                         </li>
                                     </ul>
 
-                                    <input type="hidden" name="baby_ycq" id="ycq" value="三个月"
+                                    <input type="hidden" name="ysjy" id="ysnl" value=""
                                            class="form-control input-lg">
                                     <p class="help-block"></p>
                                 </div>
@@ -105,7 +88,7 @@
                                 <!--<label class="control-label required">{:__('Email')}<span class="text-success"></span></label>-->
                                 <div class="controls">
                                     <span style="display: inline-block" class="label-left">您的电话 </span>
-                                    <input type="text" name="mobile" id="c-mobile" data-rule="required:mobile"
+                                    <input type="text" name="mobile" id="c-mobile"  value="{$user.mobile}"
                                            placeholder="请输入" class="form-control input-lg">
                                     <p class="help-block"></p>
                                 </div>
